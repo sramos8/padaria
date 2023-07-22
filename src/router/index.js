@@ -1,24 +1,48 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
+const Home = () => import('../views/Home/index.vue')
+const Feedbacks = () => import('../views/Feedbacks/index.vue')
+const Credencials = () => import('../views/Credencials/index.vue')
+const Produtos = () => import('../views/Produtos/index.vue')
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/credencials',
+    name: 'Credencials',
+    component: Credencials,
+    meta: {
+      hasAuth: true
+    }
+  },
+  {
+    path: '/feedbacks',
+    name: 'Feedbacks',
+    component: Feedbacks,
+    meta: {
+      hasAuth: true
+    }
+  },
+  {
+    path: '/produtos',
+    name: 'Produtos',
+    component: Produtos,
+    meta: {
+      hasAuth: true
+    }
+  },
+  {
+    path: '/:pathMatch(.*)*', // caso tentem acessar uma rota que nao existe então é usado para redirecionar para a home
+    redirect: { name: 'Home' }
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory('/'),
   routes
 })
 
