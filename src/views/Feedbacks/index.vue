@@ -1,3 +1,3 @@
 <template>
-  <router-view/>
+<H1>feed</H1>
 </template>
