@@ -34,7 +34,7 @@
 <script>
 export default {
   setup (_, { emit }) {
-    return emit
+    return { emit }
   }
 }
 </script>
