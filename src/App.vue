@@ -1,4 +1,12 @@
 <template>
-  <h1>Bem vindo a Padaria Jangadinha</h1>
   <router-view/>
+  <modal-factory />
 </template>
+
+<script>
+import ModalFactory from './components/ModalFactory'
+
+export default {
+  components: { ModalFactory }
+}
+</script>
